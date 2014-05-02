@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+	<script type="text/x-handlebars">
+		{{outlet}}
+	</script>
+
+	<script type="text/x-handlebars" id="index">
+		<div class="slideshow">{{view App.SlidesView}}</div>
+	</script>
+
+	<script type="text/x-handlebars" id="slide">
+		<img class="poster" {{bind-attr src="view.src"}}>
+
+		{{view App.PaginationView}}
+		
+		{{#if playing}}
+			<div class="button entypo-pause" {{action pause}}></div>
+		{{else}}
+			<div class="button entypo-play" {{action play}}></div>
+		{{/if}}
+		
+		<div class="previous entypo-left-open-mini" {{action goToPrevious}}></div>
+		
+		<div class="next entypo-right-open-mini" {{action goToNext}}></div>
+
+		<h3 class="caption">{{controller.slide.caption}}</h3>
+		<div class="description">{{controller.slide.description}}</div>
+	</script>
+
+	<script type="text/javascript" src="../lib/jquery-2.1.0.js"></script>
+	<script type="text/javascript" src="../lib/handlebars-v1.3.0.js"></script>
+	<script type="text/javascript" src="../lib/ember.js"></script>
+	<script type="text/javascript" src="../lib/ember-animate.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
